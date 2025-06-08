@@ -2,10 +2,14 @@ package entidades;
 
 import java.time.LocalDate;
 
+/**
+ * 
+ */
 public final class ProdLimpeza extends Produto {
 	
 	private String subCategoria;
 	private double custoBaseDeAquisicao;
+	
 	
 	public ProdLimpeza(String nome, LocalDate dataFabric, Integer qtdEstoque,
 			Integer codBarras, String subCategoria, double custoBaseDeAquisicao) {
@@ -48,4 +52,19 @@ public final class ProdLimpeza extends Produto {
 		}
 		return this.custoBaseDeAquisicao * fator;
 	}
-}
+
+	@Override
+	public String toString() {
+		    return "===== PRODUTO LIMPEZA =====\n"
+		         + "Nome: " + getNome() + "\n"
+		         + "Subcategoria: " + getSubCategoria() + "\n"
+		         + "Data de Fabricação: " + getDataFabric().format(fmt) + "\n"
+		         + "Qtd em Estoque: " + getQtdEstoque() + "\n"
+		         + "Código de Barras: " + getCodBarras() + "\n"
+		         + "Custo base de aquisição: " + getCustoBaseDeAquisicao() + "\n"
+		         + "Valor Total Estoque: R$ " + String.format("%.2f", (calcularPrecoCusto()* getQtdEstoque())) + "\n"
+		         + "============================";
+			}
+		}
+	
+	

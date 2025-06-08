@@ -1,14 +1,12 @@
 package entidades;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public final class ProdAlimenticio extends Produto {
 
     private LocalDate dataValidade;
     private Double peso;
     private Double custoPorKg;
-    private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
     public ProdAlimenticio(String nome, LocalDate dataFabric, Integer qtdEstoque,
                            Integer codBarras, Double peso, Double custoPorKg) {

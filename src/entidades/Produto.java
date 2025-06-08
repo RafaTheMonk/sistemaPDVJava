@@ -7,7 +7,7 @@ public abstract class Produto {
 	private String nome;
 	private LocalDate dataFabric;
 	private Integer qtdEstoque, codBarras;
-	private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+	protected static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
 	
 	public Produto(String nome, LocalDate dataFabric, Integer qtdEstoque,
 			Integer codBarras) {

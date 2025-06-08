@@ -16,6 +16,7 @@ public class Programa {
     public static ServicoMetodoPagamento taxa;
     private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+    
     public static int lerInteiro(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -63,6 +64,8 @@ public class Programa {
     }
 
     public static void main(String[] args) {
+    	
+    	mock();
         int op;
         do {
             System.out.println("Bem-vindo ao nosso sistema!");
@@ -138,8 +141,8 @@ public class Programa {
             System.out.println("Data de validade calculada: " + ((ProdAlimenticio) novoProduto).getDataValidade().format(fmt));
 
         } else if (tipoProduto == 2) {
-            System.out.print("Qual a subcategoria do produto de limpeza? ");
-            String subCategoria = sc.nextLine();
+            System.out.println("Qual a subcategoria do produto de limpeza? ");
+            String subCategoria = lerString(("detergente, desinfetante, multiuso ou outro: "));
             double custoBase = lerDouble("Qual o custo base de aquisição? ");
             int qtdEstoque = lerInteiro("Quantidade em estoque: ");
             
@@ -181,7 +184,7 @@ public class Programa {
                     break;
             }
             System.out.println();
-        } while (op != 2);
+        } while (op != 3);
     }
 
     public static void exibirMenuCliente() {
@@ -239,7 +242,11 @@ public class Programa {
 
                     ServicoPagamento gerar = new ServicoPagamento(precoCusto * qtdComprar, taxa);
                     NotaFiscal notaFiscal = gerar.processarNotaFiscal(p, qtdComprar);
-
+                    
+                    if(p.getQtdEstoque()==0) {
+                    	produtos.remove(p);
+                    }
+                    
                     System.out.println("\nCompra realizada com sucesso!");
                     System.out.println(notaFiscal);
                 } else {
@@ -255,4 +262,76 @@ public class Programa {
             System.out.println("Verifique se digitou o nome corretamente.");
         }
     }
+    
+    public static void mock() {
+    	
+    	//ESSE MÉTODO INSTANCIA 7 OBJ DE CADA CLASSE PRODUTO(FILHAS)
+    	
+    	Produto mockProduto = null;
+    	
+    	mockProduto = new ProdAlimenticio("Arroz", LocalDate.parse("10/08/2025", fmt), 50 , 123123123, 1.00, 5.50);
+    	produtos.add(mockProduto);
+    	
+    	mockProduto = new ProdAlimenticio("Feijão", LocalDate.parse("15/09/2025", fmt), 80, 234234234, 1.00, 7.20);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdAlimenticio("Macarrão", LocalDate.parse("20/07/2025", fmt), 120, 345345345, 0.50, 4.80);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdAlimenticio("Café", LocalDate.parse("05/10/2025", fmt), 60, 456456456, 0.50, 15.00);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdAlimenticio("Açúcar", LocalDate.parse("30/06/2025", fmt), 150, 567567567, 1.00, 3.90);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdAlimenticio("Óleo de Soja", LocalDate.parse("12/05/2025", fmt), 90, 678678678, 0.90, 8.50);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdAlimenticio("Sal", LocalDate.parse("18/11/2025", fmt), 200, 789789789, 1.00, 2.00);
+    	produtos.add(mockProduto);
+    	
+    	mockProduto = new ProdLimpeza("Sabão Brilux", LocalDate.parse("12/08/2025", fmt), 25, 109302909, "detergente", 4.00);
+    	produtos.add(mockProduto);
+    	
+    	mockProduto = new ProdLimpeza("Água Sanitária Suprema", LocalDate.parse("25/07/2025", fmt), 40, 218413818, "desinfetante", 5.50);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdLimpeza("Veja Multiuso Power", LocalDate.parse("10/06/2025", fmt), 60, 327524727, "multiuso", 7.80);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdLimpeza("Amaciante Conforto", LocalDate.parse("05/08/2025", fmt), 35, 436635636, "lava-roupas", 12.00);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdLimpeza("Lava-Louças Ypê Maçã", LocalDate.parse("20/07/2025", fmt), 75, 545746545, "detergente", 3.20);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdLimpeza("Limpador Pinho Sol", LocalDate.parse("15/05/2025", fmt), 50, 654857454, "desinfetante", 9.50);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdLimpeza("Limpa Vidros Cristalino", LocalDate.parse("30/08/2025", fmt), 30, 763968363, "limpa-vidros", 8.00);
+    	produtos.add(mockProduto);
+    	
+    	mockProduto = new ProdUtilitario("Pá de madeira", LocalDate.parse("15/06/2025", fmt), 15, 123456789, 10.00);
+    	produtos.add(mockProduto);
+    	
+    	mockProduto = new ProdUtilitario("Vassoura de Pelo Sintético", LocalDate.parse("20/05/2025", fmt), 30, 987654321, 15.50);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdUtilitario("Rodo Duplo de Plástico", LocalDate.parse("01/06/2025", fmt), 25, 876543210, 12.00);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdUtilitario("Balde de Plástico 10L", LocalDate.parse("10/04/2025", fmt), 50, 765432109, 8.75);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdUtilitario("Pano de Chão Algodão", LocalDate.parse("05/03/2025", fmt), 100, 654321098, 4.20);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdUtilitario("Escova para Vaso Sanitário", LocalDate.parse("22/02/2025", fmt), 40, 543210987, 9.00);
+    	produtos.add(mockProduto);
+
+    	mockProduto = new ProdUtilitario("Saco de Lixo Reforçado 50L", LocalDate.parse("18/05/2025", fmt), 80, 432109876, 18.30);
+    	produtos.add(mockProduto);
+    	
+    }
+    
 }
