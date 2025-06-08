@@ -1,8 +1,11 @@
 package entidades;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class NotaFiscal {
+	
+	private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
 	private Integer codNota;
 	private LocalDateTime dataHoraCompra;
 	private Double valorTotal, impostos;
@@ -43,7 +46,7 @@ public class NotaFiscal {
 	public String toString() {
 	    return "===== NOTA FISCAL =====\n"
 	         + "Código da Nota:      " + codNota + "\n"
-	         + "Data/Hora da Compra: " + dataHoraCompra + "\n"
+	         + "Data/Hora da Compra: " + fmt.format(dataHoraCompra) + "\n"
 	         + "Valor Total:         R$ " + String.format("%.2f", valorTotal) + "\n"
 	         + "Impostos:            R$ " + String.format("%.2f", impostos) + "\n"
 	         + "========================";

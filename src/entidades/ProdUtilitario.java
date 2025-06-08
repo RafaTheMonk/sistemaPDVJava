@@ -24,4 +24,18 @@ public final class ProdUtilitario extends Produto {
 	public double calcularPrecoCusto() {
 		return this.custoUnitario;
 	}
+
+	@Override
+	public String toString() {
+		return "===== PRODUTO UTILITÁRIO =====\n"
+		         + "Nome: " + getNome() + "\n"
+		         + "Data de Fabricação: " + getDataFabric().format(fmt) + "\n"
+		         + "Qtd em Estoque: " + getQtdEstoque() + "\n"
+		         + "Código de Barras: " + getCodBarras() + "\n"
+		         + "Custo unitário: " + getCustoUnitario() + "\n"
+		         + "Valor Total Estoque: R$ " + String.format("%.2f", (calcularPrecoCusto() * getQtdEstoque())) + "\n"
+		         + "============================";
+	}
+	
+	
 }
