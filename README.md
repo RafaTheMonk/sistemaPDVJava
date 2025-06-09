@@ -1,4 +1,4 @@
-
+# Versão código comentado
 # 💼 Sistema PDV (Ponto de Venda) — Estudo em Java
 
 Este projeto é um estudo prático voltado para a construção de um **sistema PDV (Ponto de Venda)** com base em princípios sólidos da **programação orientada a objetos**. Desenvolvido com foco em boas práticas como **inversão de controle**, **injeção de dependência**, **baixo acoplamento** e **alta coesão**, o sistema simula operações de cadastro de produtos, controle de estoque e processo de compra com emissão de nota fiscal.
